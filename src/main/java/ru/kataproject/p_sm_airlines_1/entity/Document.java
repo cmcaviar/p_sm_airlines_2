@@ -1,6 +1,5 @@
 package ru.kataproject.p_sm_airlines_1.entity;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import ru.kataproject.p_sm_airlines_1.util.enums.DocumentType;
@@ -17,15 +16,21 @@ public class Document {
     @Column(name = "id", nullable = false)
     private Long id;
 
+    @Column(name = "document_type", nullable = false)
     private DocumentType documentType;
 
+    @Column(name = "document_number")
     private String documentNumber;
 
+    @Column(name = "registration_address")
     private String registrationAddress;
 
+    @Column(name = "where_issued")
     private String whereIssued;
 
+    @Column(name = "department_code")
     private String departmentCode;
 
+    @Column(name = "date_of_issue")
     private Date dateOfIssue;
 }
