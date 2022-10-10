@@ -10,6 +10,7 @@ import java.util.Date;
 @Entity
 @Getter
 @Setter
+@Table(name="document")
 public class Document {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
