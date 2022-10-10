@@ -14,6 +14,7 @@
   - [Проверка задач](#проверка-задач)
   - [Требования к коду](#требования-к-коду)
   - [Созвоны по проекту](#созвоны-по-проекту)
+  - [Работа с Liquibase](#работа-с-liquibase)
 
 
 ### Summary
@@ -172,3 +173,58 @@ Dev-stand будем поднимать и разворачивать через
 
 Любые другие рабочие созвоны команда проводит без ограничений, т.е. в любое время без участия техлида.
 Договаривайтесь сами :) 
+
+### Работа с Liquibase
+
+После внедрения в проект системы контроля версий базы данных - Liquibase управление структурой таблиц передается этой библиотеке.
+Для формирования новой таблицы к уже написанной Entity необходимо создать новый yaml файл в папке resources.db.changelog.changeset.
+Этот файл - скрипт, по которому будут формироваться DDL команды в базу данных. Аннотации Hibernate больше не управляют структурой таблиц,
+однако настройка jpa: ddl-auto: validate указывает, что будет осуществляться проверка написанного скрипта и структуры, согласно аннотациям.
+Для лучшей читаемости предлагается на каждую таблицу создавать отдельный файл скрипта с именем create_table_имя таблицы.
+На примере ниже представлено два скрипта для создания двух связанных таблиц - у Person есть документ по связи OneToOne с сущностью Document.
+
+```
+databaseChangeLog:
+  - changeSet:
+      id: createDocumentTable
+      author: Aleksandr
+      changes:
+        - createTable:
+            tableName: document
+            columns:
+              - column:
+                  name: number
+                  type: integer
+                  constraints:
+                    primaryKey: true
+```
+
+```
+databaseChangeLog:
+  - changeSet:
+      id: createPersonTable
+      author: Aleksandr
+      changes:
+        - createTable:
+            tableName: person
+            columns:
+              - column:
+                  name: id
+                  autoIncrement: true
+                  type: bigint
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: name
+                  type: varchar(255)
+              - column:
+                  name: document_number
+                  type: integer
+        - addForeignKeyConstraint:
+            constraintName: person_document_number
+            baseColumnNames: document_number
+            baseTableName: person
+            referencedColumnNames: number
+            referencedTableName: document
+```
+
