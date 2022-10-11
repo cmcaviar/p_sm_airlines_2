@@ -13,7 +13,8 @@ import java.util.Date;
 @Table(name="document")
 public class Document {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "document_gen")
+    @SequenceGenerator(name = "document_gen", sequenceName = "document_sequence", allocationSize = 1)
     @Column(name = "id", nullable = false)
     private Long id;
 
