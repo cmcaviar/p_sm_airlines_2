@@ -3,8 +3,11 @@ package ru.kataproject.p_sm_airlines_1.service.impl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.kataproject.p_sm_airlines_1.entity.Destination;
+import ru.kataproject.p_sm_airlines_1.entity.Dto.DestinationDTO;
 import ru.kataproject.p_sm_airlines_1.repository.DestinationRepository;
 import ru.kataproject.p_sm_airlines_1.service.DestinationService;
+import ru.kataproject.p_sm_airlines_1.util.exceptions.DestinationNotFoundException;
+import ru.kataproject.p_sm_airlines_1.util.mapper.DestinationMapper;
 
 import java.util.Collections;
 import java.util.List;
@@ -14,28 +17,37 @@ import java.util.List;
 public class DestinationServiceImpl implements DestinationService {
 
     private final DestinationRepository destinationRepository;
+    private final DestinationMapper destinationMapper;
 
 
     @Override
-    public Destination createDestination(Destination destination) {
-        return destinationRepository.save(destination);
+    public DestinationDTO createDestination(final DestinationDTO destinationDTO) {
+        Destination savedDestination = destinationRepository.save(destinationMapper.mapDtoToDestination(destinationDTO));
+        return destinationMapper.mapDestinationToDto(savedDestination);
     }
 
     @Override
-    public Destination updateDestination(Destination destination) {
-        return destinationRepository.save(destination);
+    public DestinationDTO updateDestination(final DestinationDTO destinationDTO) {
+        Destination updatedDestination = destinationRepository.save(destinationMapper.mapDtoToDestination(destinationDTO));
+        return destinationMapper.mapDestinationToDto(updatedDestination);
     }
 
     @Override
-    public List<Destination> getDestinations(Long id, String city, String countryName) {
+    public List<DestinationDTO> getDestinations(final Long id, final String city, final String countryName) {
         if (id != null) {
-            return destinationRepository.findAllById(Collections.singleton(id));
+            List<DestinationDTO> list = destinationMapper.mapDestinationListToDto(destinationRepository.findAllById(Collections.singleton(id)));
+            if (list.isEmpty()) {throw new DestinationNotFoundException(id.toString());}
+            return list;
         } else if (city != null) {
-            return destinationRepository.findByCity(city);
+            List<DestinationDTO> list = destinationMapper.mapDestinationListToDto(destinationRepository.findByCity(city));
+            if (list.isEmpty()) {throw new DestinationNotFoundException(city);}
+            return list;
         } else if (countryName != null) {
-            return destinationRepository.findAllByCountryName(countryName);
+            List<DestinationDTO> list = destinationMapper.mapDestinationListToDto(destinationRepository.findAllByCountryName(countryName));
+            if (list.isEmpty()) {throw new DestinationNotFoundException(countryName);}
+            return list;
         } else {
-            return Collections.emptyList();
+            throw new DestinationNotFoundException();
         }
     }
 }

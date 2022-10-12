@@ -1,13 +1,15 @@
 package ru.kataproject.p_sm_airlines_1.service;
 
 import ru.kataproject.p_sm_airlines_1.entity.Destination;
+import ru.kataproject.p_sm_airlines_1.entity.Dto.DestinationDTO;
+
 import java.util.List;
 
 public interface DestinationService {
 
-    Destination createDestination(Destination destination);
+    DestinationDTO createDestination(final DestinationDTO destinationDTO);
 
-    Destination updateDestination(Destination destination);
+    DestinationDTO updateDestination(final DestinationDTO destinationDTO);
 
-    List<Destination> getDestinations(Long id, String city, String countryName);
+    List<DestinationDTO> getDestinations(final Long id, final String city, final String countryName);
 }

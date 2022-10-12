@@ -29,16 +29,16 @@ public class Destination {
 
     @NonNull
     @Column(name = "country_name")
-    String countryName;
+    private String countryName;
 
     @NonNull
     @Column(name = "airport_name")
-    String airportName;
+    private String airportName;
 
     @NonNull
     @Column(name = "airport_code")
-    String airportCode;
+    private String airportCode;
 
     @Column(name = "timezone")
-    TimeZone timeZone;
+    private TimeZone timeZone;
 }

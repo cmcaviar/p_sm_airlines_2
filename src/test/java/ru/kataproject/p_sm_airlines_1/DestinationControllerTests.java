@@ -11,6 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import ru.kataproject.p_sm_airlines_1.entity.Destination;
+import ru.kataproject.p_sm_airlines_1.entity.Dto.DestinationDTO;
 import ru.kataproject.p_sm_airlines_1.entity.Enumeration.CountryCode;
 import ru.kataproject.p_sm_airlines_1.repository.DestinationRepository;
 import ru.kataproject.p_sm_airlines_1.service.impl.DestinationServiceImpl;
@@ -35,11 +36,11 @@ public class DestinationControllerTests {
     @Autowired
     DestinationServiceImpl destinationService;
 
-    Destination destination_1 = new Destination(1L, "TestCity1", CountryCode.RUS, "TestCountry1",
+    DestinationDTO destination_1 = new DestinationDTO(1L, "TestCity1", CountryCode.RUS, "TestCountry1",
             "TestAirport1", "TestCode1", TimeZone.getTimeZone("1"));
-    Destination destination_2 = new Destination(2L, "TestCity2", CountryCode.BLR, "TestCountry2",
+    DestinationDTO destination_2 = new DestinationDTO(2L, "TestCity2", CountryCode.BLR, "TestCountry2",
             "TestAirport2", "TestCode2", TimeZone.getTimeZone("2"));
-    Destination destination_3 = new Destination(3L, "TestCity3", CountryCode.RUS, "TestCountry1",
+    DestinationDTO destination_3 = new DestinationDTO(3L, "TestCity3", CountryCode.RUS, "TestCountry1",
             "TestAirport3", "TestCode3", TimeZone.getTimeZone("3"));
 
 
