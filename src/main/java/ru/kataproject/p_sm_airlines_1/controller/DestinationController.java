@@ -14,7 +14,7 @@ import ru.kataproject.p_sm_airlines_1.entity.Dto.DestinationDTO;
 
 import java.util.List;
 
-@Tag(name = "Destination API", description = "Сервис получения направлений")
+@Tag(name = "Destination API", description = "Service of creating, updating and getting destination by ID/city/country")
 @RequestMapping(DestinationController.BASE_NAME)
 public interface DestinationController {
 
