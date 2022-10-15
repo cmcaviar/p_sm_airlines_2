@@ -5,79 +5,64 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.kataproject.p_sm_airlines_1.controller.SeatController;
+import ru.kataproject.p_sm_airlines_1.entity.Dto.SeatDTO;
 import ru.kataproject.p_sm_airlines_1.entity.Seat;
 import ru.kataproject.p_sm_airlines_1.service.SeatService;
+import ru.kataproject.p_sm_airlines_1.util.exceptions.SeatNotFoundException;
+import ru.kataproject.p_sm_airlines_1.util.handlers.SeatExceptionHandler;
+import ru.kataproject.p_sm_airlines_1.util.mapper.SeatMapper;
 
-import java.util.List;
+import javax.persistence.EntityNotFoundException;
 
 @RestController
 @RequiredArgsConstructor
+@SeatExceptionHandler
 public class SeatControllerImpl implements SeatController {
     private final SeatService seatService;
+    private final SeatMapper seatMapper;
 
     @Override
-    public ResponseEntity<Seat> getById(@RequestParam Long id) {
-        Seat seat = seatService.getById(id);
-
-        if (seat != null) {
-            return new ResponseEntity<>(seat, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+    public ResponseEntity<SeatDTO> getById(@RequestParam final Long id){
+        try {
+            return new ResponseEntity<>(seatMapper.convertToDTO(seatService.getById(id)), HttpStatus.OK);
+        }
+        catch (EntityNotFoundException e) {
+            throw new SeatNotFoundException(id);
         }
     }
 
     @Override
-    public ResponseEntity<?> addSeat(@RequestBody Seat seat) {
+    public ResponseEntity<?> addSeat(@RequestBody final SeatDTO seatDTO) {
+        Seat seat = seatMapper.convertToEntity(seatDTO);
         seatService.addSeat(seat);
         return new ResponseEntity<>(seat.getId(), HttpStatus.OK);
     }
 
     @Override
-    public ResponseEntity<?> updateSeat(Seat seat) {
+    public ResponseEntity<?> updateSeat(final SeatDTO seatDTO) {
+        Seat seat = seatMapper.convertToEntity(seatDTO);
         seatService.updateSeat(seat);
         return new ResponseEntity<>(seat.getId(), HttpStatus.OK);
     }
 
     @Override
-    public ResponseEntity<List<Seat>> getByFlight(@RequestParam Long flight_id) {
-        List<Seat> result = seatService.getSeatsByFlightId(flight_id);
-
-        if ((result == null) || (result.isEmpty())) {
-            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
-        } else {
-            return new ResponseEntity<>(result, HttpStatus.OK);
-        }
+    public ResponseEntity<Integer> getSoldSeatsNumber() {
+        return new ResponseEntity<>(seatService.getSoldSeatsNumber(), HttpStatus.OK);
     }
 
     @Override
-    public ResponseEntity<List<Seat>> getByFlightAndCategory(@RequestParam Long flight_id, @RequestParam Category name) {
-        List<Seat> result = seatService.getSeatsByFlightIdAndCategoryId(flight_id, name);
-
-        if ((result == null) || (result.isEmpty())) {
-            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
-        } else {
-            return new ResponseEntity<>(result, HttpStatus.OK);
-        }
+    public ResponseEntity<Integer> getUnSoldSeatsNumber() {
+        return new ResponseEntity<>(seatService.getUnSoldSeatsNumber(), HttpStatus.OK);
     }
 
     @Override
-    public ResponseEntity<Integer> getSoldSeatsNumber(@RequestParam Long flight_id) {
-        return new ResponseEntity<>(seatService.getSoldSeatsNumber(flight_id), HttpStatus.OK);
+    public ResponseEntity<Integer> getRegisteredSeatsNumber() {
+        return new ResponseEntity<>(seatService.getRegisteredSeatsNumber(), HttpStatus.OK);
     }
 
     @Override
-    public ResponseEntity<Integer> getUnSoldSeatsNumber(@RequestParam Long flight_id) {
-        return new ResponseEntity<>(seatService.getUnSoldSeatsNumber(flight_id), HttpStatus.OK);
-    }
-
-    @Override
-    public ResponseEntity<Integer> getRegisteredSeatsNumber(Long flight_id) {
-        return new ResponseEntity<>(seatService.getRegisteredPassengersNumber(flight_id), HttpStatus.OK);
-    }
-
-    @Override
-    public ResponseEntity<Integer> getUnRegisteredSeatsNumber(Long flight_id) {
-        return new ResponseEntity<>(seatService.getUnRegisteredPassengersNumber(flight_id), HttpStatus.OK);
+    public ResponseEntity<Integer> getUnRegisteredSeatsNumber() {
+        return new ResponseEntity<>(seatService.getUnRegisteredSeatsNumber(), HttpStatus.OK);
     }
 
 }

@@ -9,7 +9,6 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@ToString
 @Table(name = "seat")
 public class Seat {
     @Id
@@ -18,27 +17,27 @@ public class Seat {
     private Long id;
 
     /**
-     * seat number in cabin, like A6, C8...
+     * Row letter of seat like A, B, C, F, etc
+     */
+    @Column(name = "seat_row", nullable = false)
+    private String seatRow;
+
+    /**
+     * just seat number, without letter; seat in row
      */
     @Column(name = "seat_number", nullable = false)
-    private String seatNumber;
+    private Integer seatNumber;
 
-    /**
-     * basic coast
-     */
     @Column(name = "fare", nullable = false)
-    private Integer fare;
+    private Long fare;
 
-    /**
-     * aircraft in which this seat
-     */
-//    @OneToOne(fetch = FetchType.LAZY)
+//    @OneToOne(fetch = FetchType.LAZY) //TODO uncomment after creating aircraft entity
 //    private Aircraft aircraft;
 
-    @Column(name = "is_registered")
+    @Column(name = "is_registered", nullable = false)
     private Boolean isRegistered;
 
-    @Column(name = "is_sold")
+    @Column(name = "is_sold", nullable = false)
     private Boolean isSold;
 
 }

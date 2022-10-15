@@ -2,8 +2,6 @@ package ru.kataproject.p_sm_airlines_1.service;
 
 import ru.kataproject.p_sm_airlines_1.entity.Seat;
 
-import java.util.List;
-
 public interface SeatService {
     void addSeat(Seat seat);
 
@@ -11,15 +9,12 @@ public interface SeatService {
 
     Seat getById(Long id);
 
-    List<Seat> getSeatsByFlightId(Long flightId);
+    int getSoldSeatsNumber();
 
-    List<Seat> getSeatsByFlightIdAndCategoryId(Long flightId, Category name);
+    int getUnSoldSeatsNumber();
 
-    int getSoldSeatsNumber(Long flightId);
+    int getRegisteredSeatsNumber();
 
-    int getUnSoldSeatsNumber(Long flightId);
+    int getUnRegisteredSeatsNumber();
 
-    int getRegisteredPassengersNumber(Long flightId);
-
-    int getUnRegisteredPassengersNumber(Long flightId);
 }
