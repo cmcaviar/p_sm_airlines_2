@@ -5,7 +5,7 @@ import lombok.Setter;
 import ru.kataproject.p_sm_airlines_1.util.enums.DocumentType;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Entity
 @Getter
@@ -34,5 +34,9 @@ public class Document {
     private String departmentCode;
 
     @Column(name = "date_of_issue")
-    private Date dateOfIssue;
+    private LocalDateTime dateOfIssue;
+
+    //todo one to one link to person entity
+    @Column(name = "person")
+    private String person = "link to person entity";
 }
