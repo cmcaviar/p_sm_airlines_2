@@ -32,14 +32,14 @@ public class SeatControllerImpl implements SeatController {
     }
 
     @Override
-    public ResponseEntity<?> addSeat(@RequestBody final SeatDTO seatDTO) {
+    public ResponseEntity<Long> addSeat(@RequestBody final SeatDTO seatDTO) {
         Seat seat = seatMapper.convertToEntity(seatDTO);
         seatService.addSeat(seat);
         return new ResponseEntity<>(seat.getId(), HttpStatus.OK);
     }
 
     @Override
-    public ResponseEntity<?> updateSeat(final SeatDTO seatDTO) {
+    public ResponseEntity<Long> updateSeat(final SeatDTO seatDTO) {
         Seat seat = seatMapper.convertToEntity(seatDTO);
         seatService.updateSeat(seat);
         return new ResponseEntity<>(seat.getId(), HttpStatus.OK);

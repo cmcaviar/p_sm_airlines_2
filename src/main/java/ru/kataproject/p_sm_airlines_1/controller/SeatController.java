@@ -33,7 +33,7 @@ public interface SeatController {
             @ApiResponse(responseCode = "200", description = "Seat was created successfully, seat id return",
                     content = {@Content(mediaType = "text/plain; charset=utf-8")}),
             @ApiResponse(responseCode = "400", description = "Seat wasn't created", content = @Content)})
-    ResponseEntity<?> addSeat(@Parameter(description = "Seat(DTO) that you need add") final SeatDTO seat);
+    ResponseEntity<Long> addSeat(@Parameter(description = "Seat(DTO) that you need add") final SeatDTO seat);
 
     @PutMapping("/update")
     @Operation(summary = "Update seat", description = "Update seat")
@@ -41,7 +41,7 @@ public interface SeatController {
             @ApiResponse(responseCode = "200", description = "Seat was updated successfully; seat id return",
                     content = {@Content(mediaType = "text/plain; charset=utf-8")}),
             @ApiResponse(responseCode = "400", description = "Seat wasn't updated", content = @Content)})
-    ResponseEntity<?> updateSeat(@Parameter(description = "Seat(DTO) that you need update") final SeatDTO seat);
+    ResponseEntity<Long> updateSeat(@Parameter(description = "Seat(DTO) that you need update") final SeatDTO seat);
 
     @GetMapping("/get-sold-number")
     @Operation(summary = "Get sold seats number", description = "Get sold seats number")
