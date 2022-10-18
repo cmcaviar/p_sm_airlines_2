@@ -6,9 +6,11 @@ import ru.kataproject.p_sm_airlines_1.entity.Document;
 import ru.kataproject.p_sm_airlines_1.repository.DocumentRepository;
 import ru.kataproject.p_sm_airlines_1.service.DocumentService;
 import ru.kataproject.p_sm_airlines_1.util.exceptions.DocumentNotFoundException;
+import ru.kataproject.p_sm_airlines_1.util.handlers.DocumentExceptionHandler;
 
 @Service
 @RequiredArgsConstructor
+@DocumentExceptionHandler
 public class DocumentServiceImpl implements DocumentService {
 
     private final DocumentRepository documentRepository;

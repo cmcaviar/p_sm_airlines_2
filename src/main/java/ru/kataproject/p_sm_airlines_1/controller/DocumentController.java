@@ -3,6 +3,7 @@ package ru.kataproject.p_sm_airlines_1.controller;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -21,7 +22,8 @@ public interface DocumentController {
     @PostMapping("/create")
     @Operation(summary = "Create document", description = "Creates new document, returns id of created document")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Document successfully returned", content = @Content),
+            @ApiResponse(responseCode = "200", description = "Document successfully returned",
+                    content = @Content(mediaType = "application/json")),
             @ApiResponse(responseCode = "400", description = "Error while creating document", content = @Content)
     })
     ResponseEntity<Long> create(@RequestBody
@@ -31,7 +33,8 @@ public interface DocumentController {
     @PutMapping("/update")
     @Operation(summary = "Update document", description = "Edit document's fields, returns id of updated document")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Document successfully updated", content = @Content),
+            @ApiResponse(responseCode = "200", description = "Document successfully updated",
+                    content = @Content(mediaType = "application/json")),
             @ApiResponse(responseCode = "400", description = "Error while updating document", content = @Content)
     })
     ResponseEntity<Long> update(@RequestBody
@@ -41,7 +44,8 @@ public interface DocumentController {
     @GetMapping("/get-by-id")
     @Operation(summary = "Get document", description = "Provides document by id")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Document successfully returned", content = @Content),
+            @ApiResponse(responseCode = "200", description = "Document successfully returned",
+                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = DocumentDTO.class))),
             @ApiResponse(responseCode = "404", description = "Document not found", content = @Content)
     })
     ResponseEntity<DocumentDTO> getById(@Parameter(description = "Document id") final Long id);
