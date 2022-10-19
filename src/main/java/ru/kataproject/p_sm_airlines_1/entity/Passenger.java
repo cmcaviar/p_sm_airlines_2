@@ -20,16 +20,8 @@ public class Passenger {
     private Long id;
 
     @NonNull
-    @Column(name="citizenship")
-    private String citizenship; // Гражданство
-
-    @NonNull
-    @Column(name="series")
-    private Long series;   // Серия паспорта
-
-    @NonNull
-    @Column(name="number")
-    private Long number;   // Номер паспорта
+    @Column(name="document")
+    private String document;  // Заглушка , здесь должна быть сущность Document
 
     @NonNull
     @Column(name="email")

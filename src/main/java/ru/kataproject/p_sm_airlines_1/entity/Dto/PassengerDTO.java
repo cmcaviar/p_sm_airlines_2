@@ -11,11 +11,7 @@ public class PassengerDTO {
 
     private Long id;
 
-    private String citizenship; // Гражданство
-
-    private Long series;   // Серия паспорта
-
-    private Long number;   // Номер паспорта
+    private String document;
 
     private String email;
 

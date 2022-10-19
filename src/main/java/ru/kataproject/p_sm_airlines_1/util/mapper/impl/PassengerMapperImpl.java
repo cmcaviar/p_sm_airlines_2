@@ -13,16 +13,14 @@ public class PassengerMapperImpl implements PassengerMapper {
 
     @Override
     public Passenger mapDtoToPassenger(PassengerDTO passengerDTO) {
-        return new Passenger(passengerDTO.getId(), passengerDTO.getCitizenship(), passengerDTO.getSeries(),
-                passengerDTO.getNumber(), passengerDTO.getEmail(), passengerDTO.getFirst_name(), passengerDTO.getLast_name(),
-                passengerDTO.getMiddle_name(), passengerDTO.getDate_of_birth());
+        return new Passenger(passengerDTO.getId(), passengerDTO.getDocument(), passengerDTO.getEmail(), passengerDTO.getFirst_name(),
+                passengerDTO.getLast_name(), passengerDTO.getMiddle_name(), passengerDTO.getDate_of_birth());
     }
 
     @Override
     public PassengerDTO mapPassengerToDto(Passenger passenger) {
-        return new PassengerDTO(passenger.getId(), passenger.getCitizenship(), passenger.getSeries(),
-                passenger.getNumber(), passenger.getEmail(), passenger.getFirst_name(), passenger.getLast_name(),
-                passenger.getMiddle_name(), passenger.getDate_of_birth());
+        return new PassengerDTO(passenger.getId(), passenger.getDocument(), passenger.getEmail(), passenger.getFirst_name(),
+                passenger.getLast_name(), passenger.getMiddle_name(), passenger.getDate_of_birth());
     }
 
     @Override

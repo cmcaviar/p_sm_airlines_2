@@ -34,10 +34,10 @@ public class PassengerControllerTests {
     @Autowired
     PassengerServiceImpl passengerService;
 
-    PassengerDTO passenger_1 = new PassengerDTO(1l,"TestCitizenShip",1111l,111111l,"MA1SMDA@asd","Vanya"
-            , "azimovich", "Grishin", LocalDate.of(1998,7,21));
-    PassengerDTO passenger_2 = new PassengerDTO(2l,"TestCitizenShip",2222l,222222l,"MA2SMDA@asd","Nikita"
-            , "Sergeevich", "Godunov", LocalDate.of(1998,6,7));
+    PassengerDTO passenger_1 = new PassengerDTO(1l,"TestDocument","Test1@test","test_first_name1","test_last_name1","test_middle_name1"
+            , LocalDate.of(1991,1,22));
+    PassengerDTO passenger_2 = new PassengerDTO(1l,"TestDocument","Test1@test","test_first_name2","test_last_name2","test_middle_name1"
+            , LocalDate.of(1991,1,22));
 
 
     @Test
@@ -48,7 +48,7 @@ public class PassengerControllerTests {
                 )
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id", Is.is(1)))
-                .andExpect(jsonPath("$.citizenShip", Is.is("TestCitizenShip1")))
+                .andExpect(jsonPath("$.document", Is.is("TestDocument")))
                 .andDo(MvcResult -> System.out.println(MvcResult.getResponse().getContentAsString()));
 
     }
@@ -63,14 +63,14 @@ public class PassengerControllerTests {
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$[0].id", Is.is(2)))
-                .andExpect(jsonPath("$[0].citizenShip", Is.is("TestCitizenShip2")))
+                .andExpect(jsonPath("$[0].document", Is.is("TestDocument")))
                 .andDo(MvcResult -> System.out.println(MvcResult.getResponse().getContentAsString()));
     }
 
     @Test
     public void updatePassengerTest() throws Exception {
-        Passenger updatePassenger_1 = new Passenger(1l,"TestCitizenShip",1111l,111111l,"MA1SMDA@asd","Sosok"
-                , "Soskovich", "Soskov", LocalDate.of(1989,5,1));
+        Passenger updatePassenger_1 = new Passenger(1l,"TestDocument3","Test3@test","test_first_name3","test_last_name3","test_middle_name3"
+                , LocalDate.of(1992,2,23));;
         mockMvc.perform(post("/v1/passenger")
                 .content(objectMapper.writeValueAsString(passenger_1))
                 .contentType(MediaType.APPLICATION_JSON)
@@ -80,7 +80,7 @@ public class PassengerControllerTests {
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id", Is.is(1)))
-                .andExpect(jsonPath("$.city", Is.is(updatePassenger_1.getCitizenship())))
+                .andExpect(jsonPath("$.document", Is.is(updatePassenger_1.getDocument())))
                 .andDo(MvcResult -> System.out.println(MvcResult.getResponse().getContentAsString()));
     }
 }
