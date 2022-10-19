@@ -52,13 +52,8 @@ public interface TicketController {
                     @Content(mediaType = "application/json", schema = @Schema(implementation = TicketDTO.class))
             }), @ApiResponse(responseCode = "400", description = "Ticket not found", content = @Content)
     })
-    ResponseEntity<List<TicketDTO> getListOfTickets(
+    ResponseEntity<List<TicketDTO>> getListOfTickets(
             @Parameter(description = "ID of desired Ticket") @RequestParam(value = "id", required = false) final Long id,
             @Parameter(description = "Reservation number of desired Ticket") @RequestParam(value = "reservation_number", required = false) final String reservationNumber);
 
-    ResponseEntity<TicketDTO> createTicket(@RequestBody Ticket ticket);
-
-    ResponseEntity<String> updateTicket(@RequestBody Ticket ticket);
-
-    ResponseEntity<Ticket> getListOfTickets(@RequestParam Long id);
 }
