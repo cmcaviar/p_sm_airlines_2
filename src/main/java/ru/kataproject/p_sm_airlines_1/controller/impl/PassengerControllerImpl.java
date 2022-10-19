@@ -16,7 +16,7 @@ public class PassengerControllerImpl implements PassengerController {
 
 
     @Override
-    public ResponseEntity<PassengerDTO> addPassenger(PassengerDTO passengerDTO) {
+    public ResponseEntity<PassengerDTO> createPassenger(PassengerDTO passengerDTO) {
         return new ResponseEntity(passengerService.addPassanger(passengerDTO), HttpStatus.OK);
     }
 
