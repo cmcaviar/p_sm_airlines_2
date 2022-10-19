@@ -20,11 +20,11 @@ public class Ticket {
     @Column(name = "id",nullable = false)
     private Long id;
 
-    /**@OneToMany
+    /**@ManyToOne
     @JoinColumn(name = "passenger_id")   //TODO Check after creating all of the entities and make sure all connections is working properly.
     private Passenger passenger;
 
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name = "flight_id")
     private Flight flight;
 
@@ -36,6 +36,6 @@ public class Ticket {
     private Category category;**/
 
     @Column(name = "reservation_number", nullable = false)
-    private String ReservationNumber;
+    private String reservationNumber;
 
 }

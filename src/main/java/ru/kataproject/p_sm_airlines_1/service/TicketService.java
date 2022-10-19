@@ -1,13 +1,15 @@
 package ru.kataproject.p_sm_airlines_1.service;
 
+import ru.kataproject.p_sm_airlines_1.entity.Dto.TicketDTO;
 import ru.kataproject.p_sm_airlines_1.entity.Ticket;
+
+import java.util.List;
 
 public interface TicketService {
 
-    String createReservationNumber(Long id);
-    void createTicket(Ticket ticket);
-    void updateTicket(Ticket ticket);
-    Ticket getTicketById(Long id);
+    String createReservationNumber(final Long id);
+    TicketDTO createTicket(final TicketDTO ticketDTO);
+    TicketDTO updateTicket(final TicketDTO ticketDTO);
 
-    Ticket getTicketByPNR(String ReservationNumber);
+    List<TicketDTO> getTickets(final Long id, final String reservationNumber);
 }
