@@ -29,3 +29,6 @@ spring:
         format_sql: true
         jdbc:
           time_zone: Europe/Moscow
+
+  liquibase:
+    enabled: true
