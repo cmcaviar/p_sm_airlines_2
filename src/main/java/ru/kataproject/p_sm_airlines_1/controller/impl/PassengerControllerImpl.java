@@ -8,6 +8,8 @@ import ru.kataproject.p_sm_airlines_1.controller.PassengerController;
 import ru.kataproject.p_sm_airlines_1.entity.Dto.PassengerDTO;
 import ru.kataproject.p_sm_airlines_1.service.PassengerService;
 
+import javax.validation.Valid;
+
 @RequiredArgsConstructor
 @RestController
 public class PassengerControllerImpl implements PassengerController {
@@ -16,17 +18,17 @@ public class PassengerControllerImpl implements PassengerController {
 
 
     @Override
-    public ResponseEntity<PassengerDTO> createPassenger(PassengerDTO passengerDTO) {
+    public ResponseEntity<PassengerDTO> createPassenger(@Valid PassengerDTO passengerDTO) {
         return new ResponseEntity(passengerService.addPassanger(passengerDTO), HttpStatus.OK);
     }
 
     @Override
-    public ResponseEntity<PassengerDTO> updatePassenger(PassengerDTO passengerDTO) {
+    public ResponseEntity<PassengerDTO> updatePassenger(@Valid PassengerDTO passengerDTO) {
         return new ResponseEntity(passengerService.updateAndSavePassenger(passengerDTO), HttpStatus.OK);
     }
 
     @Override
-    public ResponseEntity<PassengerDTO> getPassengerById(Long id) {
+    public ResponseEntity<PassengerDTO> getPassengerById(@Valid Long id) {
         return new ResponseEntity(passengerService.getPassengerById(id), HttpStatus.OK);
     }
 }
