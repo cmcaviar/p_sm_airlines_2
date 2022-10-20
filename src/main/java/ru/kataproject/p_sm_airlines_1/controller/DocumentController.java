@@ -3,6 +3,7 @@ package ru.kataproject.p_sm_airlines_1.controller;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.ExampleObject;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -23,7 +24,8 @@ public interface DocumentController {
     @Operation(summary = "Create document", description = "Creates new document, returns id of created document")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Document successfully returned",
-                    content = @Content(mediaType = "application/json")),
+                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = Long.class),
+                            examples = @ExampleObject("13"))),
             @ApiResponse(responseCode = "400", description = "Error while creating document", content = @Content)
     })
     ResponseEntity<Long> create(@RequestBody
@@ -34,7 +36,8 @@ public interface DocumentController {
     @Operation(summary = "Update document", description = "Edit document's fields, returns id of updated document")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Document successfully updated",
-                    content = @Content(mediaType = "application/json")),
+                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = Long.class),
+                            examples = @ExampleObject("13"))),
             @ApiResponse(responseCode = "400", description = "Error while updating document", content = @Content)
     })
     ResponseEntity<Long> update(@RequestBody
