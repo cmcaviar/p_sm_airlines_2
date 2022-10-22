@@ -18,7 +18,7 @@ import java.util.Collections;
 @AllArgsConstructor
 public class PassengerServiceImpl implements PassengerService {
 
-    private PassengerRepository passengerRepository;
+    private final PassengerRepository passengerRepository;
 
     private final PassengerMapper passengerMapper;
 
