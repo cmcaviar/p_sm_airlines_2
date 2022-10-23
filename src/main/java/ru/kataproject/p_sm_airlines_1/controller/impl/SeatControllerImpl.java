@@ -35,7 +35,7 @@ public class SeatControllerImpl implements SeatController {
 
     @Override
     public ResponseEntity<Long> addSeat(@RequestBody final SeatDTO seatDTO) {
-        log.info("addSeat() with seatDTO = " + seatDTO.toString());
+        log.info("addSeat()");
         Seat seat = seatMapper.convertToEntity(seatDTO);
         seatService.addSeat(seat);
         return new ResponseEntity<>(seat.getId(), HttpStatus.OK);
@@ -43,7 +43,7 @@ public class SeatControllerImpl implements SeatController {
 
     @Override
     public ResponseEntity<Long> updateSeat(final SeatDTO seatDTO) {
-        log.info("updateSeat() with seatDTO = " + seatDTO.toString());
+        log.info("updateSeat() with id = " + seatDTO.getId());
         Seat seat = seatMapper.convertToEntity(seatDTO);
         seatService.updateSeat(seat);
         return new ResponseEntity<>(seat.getId(), HttpStatus.OK);
