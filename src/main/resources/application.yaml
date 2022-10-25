@@ -7,6 +7,8 @@ server:
 spring:
   application:
     name: app
+  main:
+    banner-mode: "off"
   profiles:
     active: dev, prod
   datasource:
