@@ -40,7 +40,7 @@ public class PassengerServiceImpl implements PassengerService {
             PassengerDTO passengerDTO = (PassengerDTO) passengerMapper.mapPassengerListToDto(passengerRepository.findAllById(Collections.singleton(id)));
             return passengerDTO;
         } else {
-            throw new PassengerNotFoundException(id.toString());
+            throw new PassengerNotFoundException();
         }
     }
 }
