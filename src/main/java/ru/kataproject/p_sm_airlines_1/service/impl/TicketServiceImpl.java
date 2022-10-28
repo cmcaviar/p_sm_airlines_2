@@ -21,7 +21,7 @@ public class TicketServiceImpl implements TicketService {
     private final TicketMapper ticketMapper;
 
     @Override
-    public String createReservationNumber(Long id) {
+    public String createReservationNumber(final Long id) {
         String reservationNumber = "UX"+id*31;
         Ticket ticket = ticketRepository.getById(id);
         ticket.setReservationNumber(reservationNumber);

@@ -28,13 +28,13 @@ public class TicketNotFoundException extends AbstractResourceNotFoundException{
             String messageBuilder = getResourceAlias() + "with reservation number" + reservationNumber +" is not found.";
             return messageBuilder;
         }  else {
-            String messageBuilder = getResourceAlias() +"with id " + reservationNumber +"is not found.";
+            String messageBuilder = getResourceAlias() +"with id " + reservationNumber +" is not found.";
             return messageBuilder;
         }
     }
 
-    private String BuildMessage() {
-        String messageBuilder = "No " +getResourceAlias()+" s are found.";
+    private String buildMessage() {
+        String messageBuilder = "No " +getResourceAlias()+"'s are found.";
         return messageBuilder;
     }
 }
