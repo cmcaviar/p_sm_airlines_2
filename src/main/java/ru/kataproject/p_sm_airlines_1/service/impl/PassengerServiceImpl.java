@@ -10,8 +10,6 @@ import ru.kataproject.p_sm_airlines_1.service.PassengerService;
 import ru.kataproject.p_sm_airlines_1.util.exceptions.PassengerNotFoundException;
 import ru.kataproject.p_sm_airlines_1.util.mapper.PassengerMapper;
 
-import java.util.Collections;
-
 
 @Service
 @Transactional
@@ -37,8 +35,8 @@ public class PassengerServiceImpl implements PassengerService {
     @Override
     public PassengerDTO getPassengerById(Long id) {
         if (id != null) {
-            PassengerDTO passengerDTO = (PassengerDTO) passengerMapper.mapPassengerListToDto(passengerRepository.findAllById(Collections.singleton(id)));
-            return passengerDTO;
+            return passengerMapper.mapPassengerToDto(passengerRepository.findById(id)
+                    .orElseThrow(() -> new PassengerNotFoundException(id.toString())));
         } else {
             throw new PassengerNotFoundException(id.toString());
         }
