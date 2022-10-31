@@ -31,7 +31,7 @@ public interface SeatController {
     @Operation(summary = "Add seat", description = "Add new seat")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Seat was created successfully, seat id return",
-                    content = {@Content(mediaType = "text/plain; charset=utf-8")}),
+                    content = {@Content(mediaType = "application/json; charset=utf-8")}),
             @ApiResponse(responseCode = "400", description = "Seat wasn't created", content = @Content)})
     ResponseEntity<Long> addSeat(@Parameter(description = "Seat(DTO) that you need add") final SeatDTO seat);
 
@@ -39,35 +39,35 @@ public interface SeatController {
     @Operation(summary = "Update seat", description = "Update seat")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Seat was updated successfully; seat id return",
-                    content = {@Content(mediaType = "text/plain; charset=utf-8")}),
+                    content = {@Content(mediaType = "application/json; charset=utf-8")}),
             @ApiResponse(responseCode = "400", description = "Seat wasn't updated", content = @Content)})
     ResponseEntity<Long> updateSeat(@Parameter(description = "Seat(DTO) that you need update") final SeatDTO seat);
 
     @GetMapping("/get-sold-number")
     @Operation(summary = "Get sold seats number", description = "Get sold seats number")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Seats found", content = {@Content(mediaType = "text/plain; charset=utf-8")}),
+            @ApiResponse(responseCode = "200", description = "Seats found", content = {@Content(mediaType = "application/json; charset=utf-8")}),
             @ApiResponse(responseCode = "400", description = "Seats not found", content = @Content)})
     ResponseEntity<Integer> getSoldSeatsNumber();
 
     @GetMapping("/get-unsold-number")
     @Operation(summary = "Get unsold seats number", description = "Get unsold seats number by flight id")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Seats found", content = {@Content(mediaType = "text/plain; charset=utf-8")}),
+            @ApiResponse(responseCode = "200", description = "Seats found", content = {@Content(mediaType = "application/json; charset=utf-8")}),
             @ApiResponse(responseCode = "400", description = "Seats not found", content = @Content)})
     ResponseEntity<Integer> getUnSoldSeatsNumber();
 
     @GetMapping("/get-registered-number")
     @Operation(summary = "Get registered seats number", description = "Get registered seats number")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Seats found", content = {@Content(mediaType = "text/plain; charset=utf-8")}),
+            @ApiResponse(responseCode = "200", description = "Seats found", content = {@Content(mediaType = "application/json; charset=utf-8")}),
             @ApiResponse(responseCode = "400", description = "Seats not found", content = @Content)})
     ResponseEntity<Integer> getRegisteredSeatsNumber();
 
     @GetMapping("/get-unregistered-number")
     @Operation(summary = "Get registered seats number", description = "Get registered seats number by flight id")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Seats found", content = {@Content(mediaType = "text/plain; charset=utf-8")}),
+            @ApiResponse(responseCode = "200", description = "Seats found", content = {@Content(mediaType = "application/json; charset=utf-8")}),
             @ApiResponse(responseCode = "400", description = "Seats not found", content = @Content)})
     ResponseEntity<Integer> getUnRegisteredSeatsNumber();
 }
