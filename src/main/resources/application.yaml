@@ -4,6 +4,12 @@ server:
     session:
       timeout: -1
 
+keycloak:
+  auth-server-url: http://localhost:8484/auth
+  realm: airline_realm
+  resource: airline_client
+  public-client: true
+
 spring:
   application:
     name: app
