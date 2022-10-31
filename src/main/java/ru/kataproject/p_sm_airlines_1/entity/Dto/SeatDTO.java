@@ -10,7 +10,7 @@ public class SeatDTO {
     private String seatRow;
     private Integer seatNumber;
     private Long fare;
-//    private AircarftDTO aircraft; //TODO uncomment after creating aircraft entity
+    private AircraftDTO aircraft;
     private Boolean isSold;
     private Boolean isRegistered;
 }
