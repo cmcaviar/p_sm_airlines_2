@@ -4,11 +4,13 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import ru.kataproject.p_sm_airlines_1.entity.Dto.SeatDTO;
 import ru.kataproject.p_sm_airlines_1.entity.Seat;
+import ru.kataproject.p_sm_airlines_1.util.mapper.AircraftMapper;
 import ru.kataproject.p_sm_airlines_1.util.mapper.SeatMapper;
 
 @Component
 @RequiredArgsConstructor
 public class SeatMapperImpl implements SeatMapper {
+    private final AircraftMapper aircraftMapper;
 
     @Override
     public SeatDTO convertToDTO(Seat seat) {
@@ -17,7 +19,7 @@ public class SeatMapperImpl implements SeatMapper {
         dto.setSeatRow(seat.getSeatRow());
         dto.setSeatNumber(seat.getSeatNumber());
         dto.setFare(seat.getFare());
-//        dto.setAircraft(seat.getAircraft()); //TODO uncomment after creating aircraft
+        dto.setAircraft(aircraftMapper.convertToDTO(seat.getAircraft()));
         dto.setIsSold(seat.getIsSold());
         dto.setIsRegistered(seat.getIsRegistered());
 
@@ -31,7 +33,7 @@ public class SeatMapperImpl implements SeatMapper {
         seat.setSeatRow(dto.getSeatRow());
         seat.setSeatNumber(dto.getSeatNumber());
         seat.setFare(dto.getFare());
-//        seat.setAircraft(dto.getAircraft()); //TODO uncomment after creating aircraft
+        seat.setAircraft(aircraftMapper.convertToEntity(dto.getAircraft()));
         seat.setIsSold(dto.getIsSold());
         seat.setIsRegistered(dto.getIsRegistered());
 

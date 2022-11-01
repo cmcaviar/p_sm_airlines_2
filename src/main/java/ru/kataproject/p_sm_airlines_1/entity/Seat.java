@@ -1,6 +1,9 @@
 package ru.kataproject.p_sm_airlines_1.entity;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 
@@ -31,8 +34,8 @@ public class Seat {
     @Column(name = "fare", nullable = false)
     private Long fare;
 
-//    @OneToOne(fetch = FetchType.LAZY) //TODO uncomment after creating aircraft entity
-//    private Aircraft aircraft;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Aircraft aircraft;
 
     @Column(name = "is_registered", nullable = false)
     private Boolean isRegistered;
