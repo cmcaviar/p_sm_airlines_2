@@ -51,7 +51,7 @@ public interface SeatController {
     ResponseEntity<Integer> getSoldSeatsNumber();
 
     @GetMapping("/get-unsold-number")
-    @Operation(summary = "Get unsold seats number", description = "Get unsold seats number by flight id")
+    @Operation(summary = "Get unsold seats number", description = "Get unsold seats number")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Seats found", content = {@Content(mediaType = "text/plain; charset=utf-8")}),
             @ApiResponse(responseCode = "400", description = "Seats not found", content = @Content)})
@@ -65,7 +65,7 @@ public interface SeatController {
     ResponseEntity<Integer> getRegisteredSeatsNumber();
 
     @GetMapping("/get-unregistered-number")
-    @Operation(summary = "Get registered seats number", description = "Get registered seats number by flight id")
+    @Operation(summary = "Get registered seats number", description = "Get unregistered seats number")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Seats found", content = {@Content(mediaType = "text/plain; charset=utf-8")}),
             @ApiResponse(responseCode = "400", description = "Seats not found", content = @Content)})
