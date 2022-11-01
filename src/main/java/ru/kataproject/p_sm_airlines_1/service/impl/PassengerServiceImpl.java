@@ -38,7 +38,7 @@ public class PassengerServiceImpl implements PassengerService {
             return passengerMapper.mapPassengerToDto(passengerRepository.findById(id)
                     .orElseThrow(() -> new PassengerNotFoundException(id.toString())));
         } else {
-            throw new PassengerNotFoundException(id.toString());
+            throw new PassengerNotFoundException();
         }
     }
 }
