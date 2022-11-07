@@ -17,6 +17,7 @@ public class AircraftMapperImpl implements AircraftMapper {
         aircraft.setModel(aircraftDTO.getModel());
         aircraft.setYearOfManufacture(aircraftDTO.getYearOfManufacture());
         aircraft.setFlightRange(aircraftDTO.getFlightRange());
+        aircraft.setNumberOfSeats(aircraftDTO.getNumberOfSeats());
 
         return aircraft;
     }
@@ -30,6 +31,7 @@ public class AircraftMapperImpl implements AircraftMapper {
         aircraftDTO.setModel(aircraft.getModel());
         aircraftDTO.setYearOfManufacture(aircraft.getYearOfManufacture());
         aircraftDTO.setFlightRange(aircraft.getFlightRange());
+        aircraftDTO.setNumberOfSeats(aircraft.getNumberOfSeats());
 
         return aircraftDTO;
     }
