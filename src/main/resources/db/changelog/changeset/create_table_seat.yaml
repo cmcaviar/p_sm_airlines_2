@@ -1,0 +1,48 @@
+databaseChangeLog:
+  - changeSet:
+      id: createSeatTale
+      author: Vitaliy_Pogodaev
+      changes:
+        - createTable:
+            tableName: seat
+            columns:
+              - column:
+                  name: id
+                  autoIncrement: true
+                  type: bigint
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: seat_row
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: seat_number
+                  type: integer
+                  constraints:
+                    nullable: false
+              - column:
+                  name: fare
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: aircraft_id
+                  type: bigint
+              - column:
+                  name: is_registered
+                  type: boolean
+                  constraints:
+                    nullable: false
+              - column:
+                  name: is_sold
+                  type: boolean
+                  constraints:
+                    nullable: false
+        - addForeignKeyConstraint:
+            constraintName: seat_aircraft_id
+            baseColumnNames: aircraft_id
+            baseTableName: seat
+            referencedColumnNames: id
+            referencedTableName: aircraft
