@@ -1,0 +1,45 @@
+databaseChangeLog:
+  - changeSet:
+      id: createPassengerTable
+      author: Murzabek
+      changes:
+        - createTable:
+            tableName: passenger
+            columns:
+              - column:
+                  name: id
+                  autoIncrement: true
+                  type: bigint
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: document
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: email
+                  type: varchar(200)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: first_name
+                  type: varchar(200)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: last_name
+                  type: varchar(200)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: middle_name
+                  type: varchar(200)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: date_of_birth
+                  type: date
+                  constraints:
+                    nullable: false
+
