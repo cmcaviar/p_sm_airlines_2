@@ -1,0 +1,37 @@
+databaseChangeLog:
+  - changeSet:
+      id: createDocumentTable
+      author: Murzabek
+      changes:
+        - createTable:
+            tableName: document
+            columns:
+              - column:
+                  name: id
+                  autoIncrement: true
+                  type: bigint
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: document_type
+                  type: integer
+                  constraints:
+                    nullable: false
+              - column:
+                  name: document_number
+                  type: varchar(255)
+              - column:
+                  name: registration_address
+                  type: varchar(255)
+              - column:
+                  name: where_issued
+                  type: varchar(255)
+              - column:
+                  name: department_code
+                  type: varchar(255)
+              - column:
+                  name: date_of_issue
+                  type: timestamp
+              - column:
+                  name: person
+                  type: varchar(255)
