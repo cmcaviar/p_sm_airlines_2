@@ -26,8 +26,8 @@ databaseChangeLog:
                   type: varchar(255)
               - column:
                   name: countryCode
-                  type: CountryCode
+                  type: int
               - column:
                   name: timeZone
-                  type: TimeZone
+                  type: timestamp with timezone
 
