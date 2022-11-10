@@ -1,0 +1,33 @@
+databaseChangeLog:
+  - changeSet:
+      id: createDestinationTable
+      author: Anatoly
+      changes:
+        - createTable:
+            tableName: destination
+            columns:
+              - column:
+                  name: id
+                  autoIncrement: true
+                  type: bigint
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: city
+                  type: varchar(255)
+              - column:
+                  name: countryName
+                  type: varchar(255)
+              - column:
+                  name: airportName
+                  type: varchar(255)
+              - column:
+                  name: airportCode
+                  type: varchar(255)
+              - column:
+                  name: countryCode
+                  type: CountryCode
+              - column:
+                  name: timeZone
+                  type: TimeZone
+
