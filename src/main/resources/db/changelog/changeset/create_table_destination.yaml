@@ -23,7 +23,7 @@ databaseChangeLog:
                   type: varchar(255)
               - column:
                   name: airport_Code
-                  type: varchar(255)
+                  type: int
               - column:
                   name: country_Code
                   type: int
