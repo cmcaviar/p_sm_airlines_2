@@ -29,16 +29,16 @@ public class Route {
     private Destination to;
 
     @NonNull
-    @Column(name = "departureDate")
-    private LocalDate departureDate;
+    @Column(name = "departure_date")
+    private LocalDate departure_date;
 
     @NonNull
-    @Column(name = "arrivalDate")
-    private LocalDate arrivalDate;
+    @Column(name = "arrival_date")
+    private LocalDate arrival_date;
 
     @NonNull
-    @Column(name = "numberOfSeats")
-    private Integer numberOfSeats;
+    @Column(name = "number_of_seats")
+    private Integer number_of_seats;
 }
 
 
