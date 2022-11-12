@@ -16,18 +16,18 @@ databaseChangeLog:
                   name: city
                   type: varchar(255)
               - column:
-                  name: country_Name
+                  name: country_name
                   type: varchar(255)
               - column:
-                  name: airport_Name
+                  name: airport_name
                   type: varchar(255)
               - column:
-                  name: airport_Code
+                  name: airport_code
                   type: int
               - column:
-                  name: country_Code
+                  name: country_code
                   type: int
               - column:
-                  name: time_Zone
+                  name: time_zone
                   type: timestamp with timezone
 
