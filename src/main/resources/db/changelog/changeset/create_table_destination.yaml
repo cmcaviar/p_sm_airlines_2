@@ -1,7 +1,7 @@
 databaseChangeLog:
   - changeSet:
       id: createDestinationTable
-      author: Anatoly
+      author: Anatoly Andreev
       changes:
         - createTable:
             tableName: destination
@@ -16,18 +16,18 @@ databaseChangeLog:
                   name: city
                   type: varchar(255)
               - column:
-                  name: countryName
+                  name: country_Name
                   type: varchar(255)
               - column:
-                  name: airportName
+                  name: airport_Name
                   type: varchar(255)
               - column:
-                  name: airportCode
+                  name: airport_Code
                   type: varchar(255)
               - column:
-                  name: countryCode
+                  name: country_Code
                   type: int
               - column:
-                  name: timeZone
+                  name: time_Zone
                   type: timestamp with timezone
 
