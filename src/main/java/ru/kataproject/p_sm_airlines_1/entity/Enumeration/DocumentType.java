@@ -1,4 +1,4 @@
-package ru.kataproject.p_sm_airlines_1.util.enums;
+package ru.kataproject.p_sm_airlines_1.entity.Enumeration;
 
 import lombok.RequiredArgsConstructor;
 

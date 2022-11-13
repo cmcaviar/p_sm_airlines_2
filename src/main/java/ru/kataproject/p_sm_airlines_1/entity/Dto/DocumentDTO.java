@@ -4,7 +4,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
-import ru.kataproject.p_sm_airlines_1.util.enums.DocumentType;
+import ru.kataproject.p_sm_airlines_1.entity.Enumeration.DocumentType;
 import java.time.LocalDateTime;
 
 @Setter
