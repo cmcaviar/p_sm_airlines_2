@@ -1,0 +1,21 @@
+databaseChangeLog:
+- changeSet:
+    id: createTicketTale
+    author: Sabina
+    changes:
+      - createTable:
+          tableName: ticket
+          columns:
+            - column:
+                name: id
+                autoIncrement: true
+                type: bigint
+                constraints:
+                  primaryKey: true
+#   TODO: add columns after changes in Ticket class
+            - column:
+                name: reservation_number
+                type: varchar(255)
+
+
+
