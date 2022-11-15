@@ -1,0 +1,33 @@
+databaseChangeLog:
+  - changeSet:
+      id: createDestinationTable
+      author: Anatoly Andreev
+      changes:
+        - createTable:
+            tableName: destination
+            columns:
+              - column:
+                  name: id
+                  autoIncrement: true
+                  type: bigint
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: city
+                  type: varchar(255)
+              - column:
+                  name: country_name
+                  type: varchar(255)
+              - column:
+                  name: airport_name
+                  type: varchar(255)
+              - column:
+                  name: airport_code
+                  type: int
+              - column:
+                  name: country_code
+                  type: int
+              - column:
+                  name: time_zone
+                  type: timestamp with timezone
+
