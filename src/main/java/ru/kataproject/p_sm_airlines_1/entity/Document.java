@@ -2,7 +2,7 @@ package ru.kataproject.p_sm_airlines_1.entity;
 
 import lombok.Getter;
 import lombok.Setter;
-import ru.kataproject.p_sm_airlines_1.util.enums.DocumentType;
+import ru.kataproject.p_sm_airlines_1.entity.Enumeration.DocumentType;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
