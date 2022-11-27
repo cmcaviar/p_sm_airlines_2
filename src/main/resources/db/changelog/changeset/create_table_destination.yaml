@@ -24,6 +24,7 @@ databaseChangeLog:
               - column:
                   name: airport_code
                   type: int
+#    todo:  type -> varchar(255) or int? must be varchar(255)
               - column:
                   name: country_code
                   type: int
