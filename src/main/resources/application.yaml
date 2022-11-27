@@ -19,7 +19,7 @@ spring:
     active: dev, prod
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5437/airline_db?useUnicode=yes&characterEncoding=UTF-8&serverTimezone=Europe/Moscow
+    url: jdbc:postgresql://localhost:5432/airline_db?useUnicode=yes&characterEncoding=UTF-8&serverTimezone=Europe/Moscow
     username: root
     password: root
     hikari:
@@ -37,6 +37,21 @@ spring:
         format_sql: true
         jdbc:
           time_zone: Europe/Moscow
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ux.air.project@gmail.com
+    password: pmztadxawpzprtzr
+    properties:
+      mail:
+        debug: true
+        smtp:
+          auth: true
+          conectiontimeout: 5000
+          timeout: 5000
+          writetimeout: 5000
+          starttls:
+            enable: true
 
   liquibase:
     enabled: true
