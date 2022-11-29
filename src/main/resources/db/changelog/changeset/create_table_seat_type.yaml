@@ -1,0 +1,29 @@
+databaseChangeLog:
+  - changeSet:
+      id: createSeatTypeTable
+      author: Dmitry Vanyukov
+      changes:
+        - createTable:
+            tableName: seat_type
+            columns:
+              - column:
+                  name: id
+                  autoIncrement: true
+                  type: bigint
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: category
+                  type: varchar(255)
+              - column:
+                  name: has_window
+                  type: boolean
+              - column:
+                  name: has_addit_place_for_legs
+                  type: boolean
+              - column:
+                  name: has_tv
+                  type: boolean
+              - column:
+                  name: is_aisle
+                  type: boolean
