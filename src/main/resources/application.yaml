@@ -28,7 +28,7 @@ spring:
   jpa:
     show-sql: true
     hibernate:
-      ddl-auto: validate
+      ddl-auto: none
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
@@ -37,6 +37,21 @@ spring:
         format_sql: true
         jdbc:
           time_zone: Europe/Moscow
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ux.air.project@gmail.com
+    password: pmztadxawpzprtzr
+    properties:
+      mail:
+        debug: true
+        smtp:
+          auth: true
+          conectiontimeout: 5000
+          timeout: 5000
+          writetimeout: 5000
+          starttls:
+            enable: true
 
   liquibase:
     enabled: true
